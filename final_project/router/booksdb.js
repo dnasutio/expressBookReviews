@@ -13,4 +13,18 @@ let books = {
 
 //console.log(books[2])
 
+/* books[3].reviews["balls"] = "I hate it here";
+
+console.log(books)
+
+if (books[3] && books[3].reviews["balls"]) {
+      // Delete the review with the username "balls"
+      delete books[3].reviews["balls"];
+      console.log(`Review with username "balls" deleted successfully.`);
+} else {
+      console.log(`Review with username "balls" not found.`);
+} */
+
+console.log(books)
+
 module.exports = books;

@@ -48,10 +48,29 @@ regd_users.put("/review/:isbn", (req, res) => {
   const username = req.session.authorization.username
   const user_review = req.body.review;
   const isbn = req.params.isbn;
+  //console.log("Balls", username, user_review, isbn)
   books[isbn].reviews[username] = user_review;
-  console.log(books[isbn].reviews[username]);
+  //console.log(books[isbn].reviews[username]);
 
-  return res.status(200).json(books[isbn].reviews);
+  console.log(books[isbn])
+
+  return res.status(200).json(`The review for the book with ISBN ${isbn} has been added/modified`);
+});
+
+// Delete a book review
+regd_users.delete("/review/:isbn", (req, res) => {
+  const username = req.session.authorization.username;
+  const isbn = req.params.isbn;
+
+  if (books[isbn] && books[isbn].reviews[username]) {
+    // Delete the review with the username
+    delete books[isbn].reviews[username];
+    console.log(`Review for the ISBN ${isbn} posted by user ${username} deleted.`);
+  } else {
+    console.log(`Review for the ISBN ${isbn} posted by user ${username} not found.`);
+  }
+
+  return res.status(200).json(`Review for the ISBN ${isbn} posted by user ${username} deleted.`);
 });
 
 module.exports.authenticated = regd_users;
