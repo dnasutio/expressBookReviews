@@ -25,6 +25,6 @@ if (books[3] && books[3].reviews["balls"]) {
       console.log(`Review with username "balls" not found.`);
 } */
 
-console.log(books)
+//console.log(books)
 
 module.exports = books;
